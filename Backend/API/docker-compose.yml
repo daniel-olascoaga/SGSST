@@ -1,0 +1,21 @@
+version: "2"
+
+services: 
+  web:
+    container_name: sgsst
+    restart: always
+    build: .
+    ports:
+      - "4000:4000"
+    links:
+      - mongo
+    volumes:
+      - .:/usr/src/app
+
+  mongo:
+    container_name: database
+    image: vijayan/mongo4
+    ports: 
+      - "27017:27017"
+    logging:
+      driver: none
